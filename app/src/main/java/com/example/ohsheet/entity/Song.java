@@ -1,4 +1,4 @@
-package com.example.ohsheet;
+package com.example.ohsheet.entity;
 
 public class Song {
     private int id;

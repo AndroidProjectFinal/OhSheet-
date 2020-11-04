@@ -1,12 +1,14 @@
-package com.example.ohsheet;
+package com.example.ohsheet.adapter;
 
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.ohsheet.R;
+import com.example.ohsheet.entity.Song;
 
 import java.util.List;
 
@@ -55,7 +57,7 @@ public class SongAdapter extends BaseAdapter {
         }else {
             textViewName = (TextView) convertView.getTag(R.id.txtName);
             textViewWriter = (TextView) convertView.getTag(R.id.txtWriter);
-            imgSave = (ImageView) convertView.getTag(R.id.imgSave);
+//            imgSave = (ImageView) convertView.getTag(R.id.imgSave);
         }
         Song song = list.get(position);
         textViewName.setText(song.getName());
