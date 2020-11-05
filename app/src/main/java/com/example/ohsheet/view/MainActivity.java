@@ -2,7 +2,10 @@ package com.example.ohsheet.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 
@@ -78,6 +81,15 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Genre(8, "aindie", R.drawable.aindie));
         adapter = new CategoryAdapter(MainActivity.this, R.id.gridView, list);
         layout.setAdapter(adapter);
+        layout.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(),ListAllSheet.class);
+                startActivity(intent);
+                //abababa
+
+            }
+        });
 
 
 
