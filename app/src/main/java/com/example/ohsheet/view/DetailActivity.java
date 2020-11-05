@@ -24,5 +24,6 @@ public class DetailActivity extends AppCompatActivity {
         String writer = intent.getStringExtra("writer");
         txtTitle.setText(title);
         txtWriter.setText(writer);
+        //aiaiaia
     }
 }
