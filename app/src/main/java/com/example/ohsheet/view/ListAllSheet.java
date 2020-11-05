@@ -1,4 +1,4 @@
-package com.example.ohsheet;
+package com.example.ohsheet.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 

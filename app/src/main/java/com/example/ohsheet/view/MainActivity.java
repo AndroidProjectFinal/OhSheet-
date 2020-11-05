@@ -1,4 +1,4 @@
-package com.example.ohsheet;
+package com.example.ohsheet.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.GridView;
 
+import com.example.ohsheet.R;
 import com.example.ohsheet.adapter.CategoryAdapter;
 import com.example.ohsheet.entity.Genre;
 import com.google.firebase.firestore.FirebaseFirestore;
