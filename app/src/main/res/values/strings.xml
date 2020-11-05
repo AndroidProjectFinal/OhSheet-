@@ -3,4 +3,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txtTitle">OhSheet !!!</string>
+    <string name="txtTitleAdmin">ADMIN</string>
+    <string name="createSong">Create Song</string>
+    <string name="createGenre">Create Genre</string>
+    <string name="listSong">Show List Song</string>
+    <string name="listGenre">Show List Genre</string>
+    <string name="createSong">Create Song</string>
+    <string name="etWriter">Writer</string>
+    <string name="etTitleSong">Name</string>
+    <string name="linkMusic">etLinkMusic</string>
+    <string name="etContent">etContent</string>
+    <string name="createGenres">Create Genre</string>
+    <string name="btnSaveCreateSong">Save</string>
+    <string name="nameGenre">Name</string>
+    <string name="btnSaveGenre">Save</string>
 </resources>

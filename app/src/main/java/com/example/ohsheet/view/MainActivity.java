@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.example.ohsheet.R;
 import com.example.ohsheet.adapter.CategoryAdapter;
@@ -20,6 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnNew;
+    private ImageView menuExpend;
     private GridView layout;
     private List<Genre> list;
     private CategoryAdapter adapter;
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         layout.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(),ListAllSheet.class);
+                Intent intent = new Intent(getApplicationContext(), ListAllSheet.class);
                 startActivity(intent);
                 //abababa
 
