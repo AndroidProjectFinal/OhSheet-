@@ -1,14 +1,14 @@
 package com.example.ohsheet.entity;
 
-public class Category {
+public class Genre {
     private int categoryId;
     private String categoryName;
     private int categoryImg;
 
-    public Category() {
+    public Genre() {
     }
 
-    public Category(int categoryId, String categoryName, int categoryImg) {
+    public Genre(int categoryId, String categoryName, int categoryImg) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.categoryImg = categoryImg;

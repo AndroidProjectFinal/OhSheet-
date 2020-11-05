@@ -1,34 +1,14 @@
 package com.example.ohsheet;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.example.ohsheet.adapter.CategoryAdapter;
-import com.example.ohsheet.entity.Category;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.firestore.CollectionReference;
+import com.example.ohsheet.entity.Genre;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnNew;
     private GridView layout;
-    private List<Category> list;
+    private List<Genre> list;
     private CategoryAdapter adapter;
     private FirebaseFirestore firestore;
 //    private String imageString;
@@ -87,14 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
 
-        list.add(new Category(1, "aindie", R.drawable.aindie));
-        list.add(new Category(2, "aindie", R.drawable.aindie));
-        list.add(new Category(3, "aindie", R.drawable.aindie));
-        list.add(new Category(4, "aindie", R.drawable.aindie));
-        list.add(new Category(5, "aindie", R.drawable.aindie));
-        list.add(new Category(6, "aindie", R.drawable.aindie));
-        list.add(new Category(7, "aindie", R.drawable.aindie));
-        list.add(new Category(8, "aindie", R.drawable.aindie));
+        list.add(new Genre(1, "aindie", R.drawable.aindie));
+        list.add(new Genre(2, "aindie", R.drawable.aindie));
+        list.add(new Genre(3, "aindie", R.drawable.aindie));
+        list.add(new Genre(4, "aindie", R.drawable.aindie));
+        list.add(new Genre(5, "aindie", R.drawable.aindie));
+        list.add(new Genre(6, "aindie", R.drawable.aindie));
+        list.add(new Genre(7, "aindie", R.drawable.aindie));
+        list.add(new Genre(8, "aindie", R.drawable.aindie));
         adapter = new CategoryAdapter(MainActivity.this, R.id.gridView, list);
         layout.setAdapter(adapter);
 

@@ -60,7 +60,7 @@ public class SongAdapter extends BaseAdapter {
 //            imgSave = (ImageView) convertView.getTag(R.id.imgSave);
         }
         Song song = list.get(position);
-        textViewName.setText(song.getName());
+        textViewName.setText(song.getTitle());
         textViewWriter.setText(song.getWriter());
         return convertView;
     }
