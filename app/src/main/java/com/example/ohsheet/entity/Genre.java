@@ -1,41 +1,48 @@
 package com.example.ohsheet.entity;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+
 public class Genre {
-    private int categoryId;
-    private String categoryName;
-    private int categoryImg;
+    private int genreId;
+    private String genreName;
+    private String genreImg;
 
     public Genre() {
     }
 
-    public Genre(int categoryId, String categoryName, int categoryImg) {
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
-        this.categoryImg = categoryImg;
+
+    public Genre(String genreName, String genreImg) {
+        this.genreName = genreName;
+        this.genreImg = genreImg;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public int getGenreId() {
+        return genreId;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setGenreId(int genreId) {
+        this.genreId = genreId;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getGenreName() {
+        return genreName;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setGenreName(String genreName) {
+        this.genreName = genreName;
     }
 
-    public int getCategoryImg() {
-        return categoryImg;
+    public String getGenreImg() {
+        return genreImg;
     }
 
-    public void setCategoryImg(int categoryImg) {
-        this.categoryImg = categoryImg;
+    public void setGenreImg(String genreImg) {
+        this.genreImg = genreImg;
     }
 
+    @Override
+    public String toString() {
+        return genreName +" - "+genreImg;
+    }
 }

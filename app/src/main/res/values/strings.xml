@@ -8,7 +8,6 @@
     <string name="createGenre">Create Genre</string>
     <string name="listSong">Show List Song</string>
     <string name="listGenre">Show List Genre</string>
-    <string name="createSong">Create Song</string>
     <string name="etWriter">Writer</string>
     <string name="etTitleSong">Name</string>
     <string name="linkMusic">etLinkMusic</string>

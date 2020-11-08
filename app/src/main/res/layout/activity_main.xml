@@ -10,14 +10,9 @@
     tools:context=".view.MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/gridView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+
+
+
 
         <TextView
             android:id="@+id/txtTitle"
@@ -37,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/search_bar"
+            android:id="@+id/searchBar"
             android:layout_width="27dp"
             android:layout_height="27dp"
             android:layout_alignParentEnd="true"
@@ -47,7 +42,7 @@
              />
 
         <ImageView
-            android:id="@+id/expanded_menu"
+            android:id="@+id/expandedMenu"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
@@ -57,21 +52,21 @@
              />
 
 
-    </RelativeLayout>
 
 
-    <GridView
-        android:id="@+id/gridView"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/relativeLayout2"
-        android:gravity="center"
-        android:numColumns="2"
-        android:stretchMode="columnWidth"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"/>
+        android:layout_below="@id/txtTitle"/>
+<!--        android:gravity="center"-->
+<!--        android:numColumns="2"-->
+<!--        android:stretchMode="columnWidth"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"/>-->
 
 
 </RelativeLayout>

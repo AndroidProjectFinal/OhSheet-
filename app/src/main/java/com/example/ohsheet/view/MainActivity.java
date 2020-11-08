@@ -1,133 +1,71 @@
 package com.example.ohsheet.view;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.ImageView;
+import android.util.Log;
 
 import com.example.ohsheet.R;
-import com.example.ohsheet.adapter.CategoryAdapter;
+import com.example.ohsheet.adapter.GenreAdapter;
 import com.example.ohsheet.entity.Genre;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GenreAdapter.OnItemClicked {
 
-    private Button btnNew;
-    private ImageView menuExpend;
-    private GridView layout;
-    private List<Genre> list;
-    private CategoryAdapter adapter;
+    private RecyclerView mRecyclerView;
+    private List<Genre> listGenre;
+    private GenreAdapter adapter;
     private FirebaseFirestore firestore;
-//    private String imageString;
-//
-//    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        layout = findViewById(R.id.gridView);
-        list = new ArrayList<>();
-//        firestore = FirebaseFirestore.getInstance();
-//        final CollectionReference reference = firestore.collection("`category");
-//
-//        reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//
-//                if(task.isSuccessful()){
-//                    QuerySnapshot snapshots = task.getResult();
-//
-//                    for(QueryDocumentSnapshot doc:snapshots){
-//                        Category category = new Category(
-//                                doc.getId(),
-//                                doc.get("categoryName").toString(),
-//                                doc.get("categoryImg").toString()
-//                        );
-//
-//                        list.add(category);
-//
-//                    }
-
-//                }
-//            }
-//        });
+        mRecyclerView = findViewById(R.id.recycleView);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
 
 
+        firestore = FirebaseFirestore.getInstance();
+        final CollectionReference reference = firestore.collection("genre");
 
-
-//        storageReference = FirebaseStorage.getInstance().getReference().child("CategorySheet").child("aindie.jpg");
-//        getImageData();
-
-
-        list = new ArrayList<>();
-
-        list.add(new Genre(1, "aindie", R.drawable.aindie));
-        list.add(new Genre(2, "aindie", R.drawable.aindie));
-        list.add(new Genre(3, "aindie", R.drawable.aindie));
-        list.add(new Genre(4, "aindie", R.drawable.aindie));
-        list.add(new Genre(5, "aindie", R.drawable.aindie));
-        list.add(new Genre(6, "aindie", R.drawable.aindie));
-        list.add(new Genre(7, "aindie", R.drawable.aindie));
-        list.add(new Genre(8, "aindie", R.drawable.aindie));
-        adapter = new CategoryAdapter(MainActivity.this, R.id.gridView, list);
-        layout.setAdapter(adapter);
-        layout.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), ListAllSheet.class);
-                startActivity(intent);
-                //abababa
-
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                     QuerySnapshot snapshots = task.getResult();
+                     listGenre = new ArrayList<>();
+                     for(QueryDocumentSnapshot doc : snapshots){
+                            Genre genre = new Genre(
+                                    doc.get("name").toString(),
+                                    doc.get("link").toString()
+                            );
+                            listGenre.add(genre);
+                     }
+                     adapter = new GenreAdapter(MainActivity.this, listGenre, MainActivity.this);
+                     mRecyclerView.setAdapter(adapter);
+                }
             }
         });
-
-
-
-//        layout.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//            }
-//        });
-
-
-//        btnNew = findViewById(R.id.btnNew);
-//        btnNew.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(),ListAllSheet.class);
-//                startActivity(intent);
-//            }
-//        });
-
     }
-
-//    private void getImageData() {
-//        Toast.makeText(MainActivity.this, "hihihi", Toast.LENGTH_SHORT).show();
-//        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                Toast.makeText(MainActivity.this, "hi", Toast.LENGTH_SHORT).show();
-////                Log.i("img", uri.toString());
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(MainActivity.this, "hihi", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//    }
+    @Override
+    public void onItemClick(int position) {
+        Log.d("TAG", "Clicked - " + position);
+        Intent intent = new Intent(getApplicationContext(), ListAllSheet.class);
+        startActivity(intent);
+    }
 }
