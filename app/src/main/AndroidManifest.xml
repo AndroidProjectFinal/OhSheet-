@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ohsheet">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.DetailActivity"></activity>
+        <activity android:name=".view.ActivityListGenre"></activity>
+        <activity android:name=".view.ActivityListSong" />
+        <activity android:name=".view.ActivityCreateGenre" />
+        <activity android:name=".view.ActivityCreateSong" />
+        <activity android:name=".view.ActivityAdmin" />
+        <activity android:name=".view.DetailActivity" />
         <activity android:name=".view.ListAllSheet" />
         <activity android:name=".view.MainActivity">
             <intent-filter>

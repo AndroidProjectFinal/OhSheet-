@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.ohsheet.R;
 import com.example.ohsheet.adapter.GenreAdapter;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
     private List<Genre> listGenre;
     private GenreAdapter adapter;
     private FirebaseFirestore firestore;
+    private ImageView expandedMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
         mRecyclerView = findViewById(R.id.recycleView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-
+        expandedMenu = findViewById(R.id.expandedMenu);
 
 
         firestore = FirebaseFirestore.getInstance();
@@ -61,6 +65,17 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
                 }
             }
         });
+
+
+        expandedMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ActivityAdmin.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
     @Override
     public void onItemClick(int position) {
@@ -68,4 +83,7 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
         Intent intent = new Intent(getApplicationContext(), ListAllSheet.class);
         startActivity(intent);
     }
+
+
+
 }
