@@ -11,8 +11,14 @@ public class Genre {
     public Genre() {
     }
 
+    public Genre(String genreName) {
+        this.genreName = genreName;
+    }
 
     public Genre(String genreName, String genreImg) {
+        if(genreName.trim().equals("")){
+            genreName = " no name";
+        }
         this.genreName = genreName;
         this.genreImg = genreImg;
     }

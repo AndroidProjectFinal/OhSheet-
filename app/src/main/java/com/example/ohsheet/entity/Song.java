@@ -17,6 +17,25 @@ public class Song {
     public Song() {
     }
 
+    public Song(String title, String writer, String sheet, int level, String createDate, String linkMusic) {
+        this.title = title;
+        this.writer = writer;
+        this.sheet = sheet;
+        this.level = level;
+        this.createDate = createDate;
+        this.linkMusic = linkMusic;
+    }
+
+    public Song(String title, String writer, String sheet, String content, int level, String createDate, String linkMusic) {
+        this.title = title;
+        this.writer = writer;
+        this.sheet = sheet;
+        this.content = content;
+        this.level = level;
+        this.createDate = createDate;
+        this.linkMusic = linkMusic;
+    }
+
     public Song(String id, String title, String writer) {
         this.id = id;
         this.title = title;

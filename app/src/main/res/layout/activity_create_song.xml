@@ -7,135 +7,156 @@
     android:background="@drawable/android"
     tools:context=".view.ActivityCreateSong">
 
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtTitleAdmin2"
-        android:layout_width="254dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="24dp"
-        android:fontFamily="cursive"
-        android:text="@string/createSong"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/etTitleSong"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/etTitleSong"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:hint="@string/etTitleSong"
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#F8E9E9"
-        app:layout_constraintBottom_toTopOf="@+id/etWriter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitleAdmin2" />
+            <TextView
+                android:id="@+id/txtTitleAdmin2"
+                android:layout_width="254dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="cursive"
+                android:text="@string/createSong"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/etTitleSong"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etWriter"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="@string/etWriter"
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#F8E9E9"
-        app:layout_constraintBottom_toTopOf="@+id/spLev"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTitleSong" />
+            <EditText
+                android:id="@+id/etTitleSong"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:hint="@string/etTitleSong"
+                android:inputType="textPersonName"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#F8E9E9"
+                app:layout_constraintBottom_toTopOf="@+id/etWriter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitleAdmin2" />
 
-    <Spinner
-        android:id="@+id/spLev"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/spGenre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnAddImage"
-        app:layout_constraintTop_toBottomOf="@+id/etWriter" />
+            <EditText
+                android:id="@+id/etWriter"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="@string/etWriter"
+                android:inputType="textPersonName"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#F8E9E9"
+                app:layout_constraintBottom_toTopOf="@+id/spLev"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etTitleSong" />
 
-    <Button
-        android:id="@+id/btnAddImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginEnd="81dp"
-        android:text="Add Image"
-        app:layout_constraintBottom_toBottomOf="@+id/spLev"
-        app:layout_constraintEnd_toStartOf="@+id/spLev"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spLev" />
+            <Spinner
+                android:id="@+id/spLev"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="25dp"
+                app:layout_constraintBottom_toTopOf="@+id/spGenre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnAddImage"
+                app:layout_constraintTop_toBottomOf="@+id/etWriter" />
 
-    <Spinner
-        android:id="@+id/spGenre"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/etLinkMusic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spLev" />
+            <Button
+                android:id="@+id/btnAddImage"
+                android:layout_width="125dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="81dp"
+                android:text="Add Image"
+                app:layout_constraintBottom_toBottomOf="@+id/spLev"
+                app:layout_constraintEnd_toStartOf="@+id/spLev"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/spLev" />
 
-    <EditText
-        android:id="@+id/etLinkMusic"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="22dp"
-        android:ems="10"
-        android:hint="@string/linkMusic"
-        android:inputType="textPersonName"
-        android:textColorHint="#EFE9E9"
-        app:layout_constraintBottom_toTopOf="@+id/etContent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spGenre" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.452" />
 
-    <EditText
-        android:id="@+id/etContent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/etContent"
-        android:inputType="textMultiLine"
-        android:textColorHint="#EDE8E8"
-        app:layout_constraintBottom_toTopOf="@+id/btnSave"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLinkMusic" />
+            <Spinner
+                android:id="@+id/spGenre"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="22dp"
+                app:layout_constraintBottom_toTopOf="@+id/etLinkMusic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spLev" />
 
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="@string/btnSaveCreateSong"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContent" />
+            <EditText
+                android:id="@+id/etLinkMusic"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginBottom="22dp"
+                android:ems="10"
+                android:hint="@string/linkMusic"
+                android:inputType="textPersonName"
+                android:textColorHint="#EFE9E9"
+                app:layout_constraintBottom_toTopOf="@+id/etContent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spGenre" />
+
+            <EditText
+                android:id="@+id/etContent"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/etContent"
+                android:inputType="textMultiLine"
+                android:textColorHint="#EDE8E8"
+                app:layout_constraintBottom_toTopOf="@+id/btnSave"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etLinkMusic" />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="17dp"
+                android:text="@string/btnSaveCreateSong"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etContent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
                      listGenre = new ArrayList<>();
                      for(QueryDocumentSnapshot doc : snapshots){
                             Genre genre = new Genre(
-                                    doc.get("name").toString(),
-                                    doc.get("link").toString()
+                                    doc.get("genreName").toString(),
+                                    doc.get("genreImg").toString()
                             );
                             listGenre.add(genre);
                      }
@@ -118,6 +118,8 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
                 break;
             //Vô login
             case R.id.nav_login:
+                Intent intent = new Intent(getApplicationContext(), ActivityAdmin.class);
+                startActivity(intent);
                 Toast.makeText(this, "Clicked Login", Toast.LENGTH_SHORT).show();
                 break;
         }
