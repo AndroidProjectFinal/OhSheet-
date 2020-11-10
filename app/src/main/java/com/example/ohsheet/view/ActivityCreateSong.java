@@ -145,9 +145,13 @@ public class ActivityCreateSong extends AppCompatActivity {
                     {
                         Uri downloadUri = task.getResult();
                         Log.e("TAG", "then: " + downloadUri.toString());
-                        Song song = new Song(etTitleSong.getText().toString().trim(),etWriter.getText().toString().trim(),
-                                "Sheet day",Integer.parseInt(spLev.getSelectedItem().toString()),
-                                "ngay day",etLinkMusic.getText().toString().trim());
+                        Song song = new Song(
+                                etTitleSong.getText().toString().trim(),
+                                etWriter.getText().toString().trim(),
+                                "Sheet day",
+                                Integer.parseInt(spLev.getSelectedItem().toString()),
+                                "ngay day",
+                                etLinkMusic.getText().toString().trim());
                         reference.add(song);
                     } else
                     {

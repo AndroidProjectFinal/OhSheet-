@@ -19,9 +19,11 @@ public class DetailActivity extends AppCompatActivity {
         txtTitle = findViewById(R.id.txtTitle);
         txtWriter = findViewById(R.id.txtWriter);
         Intent intent = new Intent();
-        String title = intent.getStringExtra("title");
-        String writer = intent.getStringExtra("writer");
-        txtTitle.setText(title);
+        Bundle bundle = getIntent().getExtras();
+        String message = bundle.getString("title");
+
+        String writer = bundle.getString("writer");
+        txtTitle.setText(message);
         txtWriter.setText(writer);
     }
 }

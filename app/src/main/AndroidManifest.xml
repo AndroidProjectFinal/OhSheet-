@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.ChordActivity" />
         <activity android:name=".view.ActivityListGenre"></activity>
         <activity android:name=".view.ActivityListSong" />
         <activity android:name=".view.ActivityCreateGenre" />

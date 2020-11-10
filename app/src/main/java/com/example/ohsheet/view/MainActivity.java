@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ohsheet.R;
@@ -40,11 +41,12 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
     private NavigationView navigationView;
     private ImageView searchBar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         searchBar = findViewById(R.id.searchBar);
         searchBar.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
         drawerLayout = findViewById(R.id.drawLayout);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
         mRecyclerView = findViewById(R.id.recycleView);
         mRecyclerView.setHasFixedSize(true);
@@ -73,6 +76,10 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
         //Load dữ liệu genre lên màn hình chính
         firestore = FirebaseFirestore.getInstance();
         final CollectionReference reference = firestore.collection("genre");
+
+
+
+
         reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -97,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
     @Override
     public void onItemClick(int position) {
         Toast.makeText(this, "Clicked - " + position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(),ListAllSheet.class);
+        startActivity(intent);
     }
 
     //Ấn các item ở bên trái khi vuốt màn hình
@@ -115,6 +124,8 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
             //Vô các hợp âm
             case R.id.nav_chord:
                 Toast.makeText(this, "Clicked Chord", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(getApplicationContext(),ChordActivity.class);
+                startActivity(intent1);
                 break;
             //Vô login
             case R.id.nav_login:
