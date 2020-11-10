@@ -133,7 +133,7 @@ public class ActivityCreateGenre extends AppCompatActivity {
                         reference.add(genre);
                     } else
                     {
-                        Log.i("TAG", "tai mat loz");
+                        Log.i("TAG", "this is msg");
                     }
                 }
             });

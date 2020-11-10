@@ -133,4 +133,9 @@ public class Song {
     public void setLinkMusic(String linkMusic) {
         this.linkMusic = linkMusic;
     }
+
+    @Override
+    public String toString() {
+        return title;
+    }
 }

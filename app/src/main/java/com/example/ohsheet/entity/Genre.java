@@ -49,6 +49,6 @@ public class Genre {
 
     @Override
     public String toString() {
-        return genreName +" - "+genreImg;
+        return genreName;
     }
 }

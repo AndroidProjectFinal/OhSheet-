@@ -28,4 +28,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="addImageOfGenre">Add Image</string>
+    <string name="updatesong">Update</string>
+    <string name="deletesong">Delete</string>
+    <string name="updategenre">Update</string>
+    <string name="deletegenre">Delete</string>
 </resources>
