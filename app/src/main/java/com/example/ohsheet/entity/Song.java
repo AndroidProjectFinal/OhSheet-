@@ -9,7 +9,7 @@ public class Song {
     private String sheet;
     private String content;
     private int level;
-    private List<Genre> listGenre;
+    private String listGenre;
     private String createBy;
     private String createDate;
     private String linkMusic;
@@ -36,13 +36,22 @@ public class Song {
         this.linkMusic = linkMusic;
     }
 
+    public Song(String title, String writer, String sheet,String linkMusic, String content) {
+        this.title = title;
+        this.writer = writer;
+        this.sheet = sheet;
+        this.linkMusic = linkMusic;
+        this.content = content;
+
+    }
+
     public Song(String id, String title, String writer) {
         this.id = id;
         this.title = title;
         this.writer = writer;
     }
 
-    public Song(String title, String writer, String sheet, String content, int level, List<Genre> listGenre, String createBy, String createDate, String linkMusic) {
+    public Song(String title, String writer, String sheet, String content, int level, String listGenre, String createBy, String createDate, String linkMusic) {
         this.title = title;
         this.writer = writer;
         this.sheet = sheet;
@@ -102,11 +111,11 @@ public class Song {
         this.level = level;
     }
 
-    public List<Genre> getListGenre() {
+    public String getListGenre() {
         return listGenre;
     }
 
-    public void setListGenre(List<Genre> listGenre) {
+    public void setListGenre(String listGenre) {
         this.listGenre = listGenre;
     }
 
