@@ -3,13 +3,14 @@ package com.example.ohsheet.entity;
 import java.util.List;
 
 public class Song {
-    private String id;
+
     private String title;
     private String writer;
     private String sheet;
+//    private List<String> content;
     private String content;
     private int level;
-    private List<Genre> listGenre;
+    private String listGenre;
     private String createBy;
     private String createDate;
     private String linkMusic;
@@ -26,23 +27,15 @@ public class Song {
         this.linkMusic = linkMusic;
     }
 
-    public Song(String title, String writer, String sheet, String content, int level, String createDate, String linkMusic) {
-        this.title = title;
-        this.writer = writer;
-        this.sheet = sheet;
-        this.content = content;
-        this.level = level;
-        this.createDate = createDate;
-        this.linkMusic = linkMusic;
-    }
+
 
     public Song(String id, String title, String writer) {
-        this.id = id;
+
         this.title = title;
         this.writer = writer;
     }
 
-    public Song(String title, String writer, String sheet, String content, int level, List<Genre> listGenre, String createBy, String createDate, String linkMusic) {
+    public Song(String title, String writer, String sheet, String content, int level, String listGenre, String createBy, String createDate, String linkMusic) {
         this.title = title;
         this.writer = writer;
         this.sheet = sheet;
@@ -54,13 +47,19 @@ public class Song {
         this.linkMusic = linkMusic;
     }
 
-    public String getId() {
-        return id;
+    public Song(String title, String writer, String sheet, int level, String listGenre, String createBy, String createDate, String linkMusic) {
+        this.title = title;
+        this.writer = writer;
+        this.sheet = sheet;
+
+        this.level = level;
+        this.listGenre = listGenre;
+        this.createBy = createBy;
+        this.createDate = createDate;
+        this.linkMusic = linkMusic;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+
 
     public String getTitle() {
         return title;
@@ -102,11 +101,11 @@ public class Song {
         this.level = level;
     }
 
-    public List<Genre> getListGenre() {
+    public String getListGenre() {
         return listGenre;
     }
 
-    public void setListGenre(List<Genre> listGenre) {
+    public void setListGenre(String listGenre) {
         this.listGenre = listGenre;
     }
 
