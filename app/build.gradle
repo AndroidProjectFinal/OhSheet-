@@ -42,7 +42,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     implementation 'com.google.firebase:firebase-firestore:21.4.3'
-
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.23'
     //noinspection GradleCompatible,GradleCompatible
     implementation "com.android.support:recyclerview-v7:28.0.0"
     //noinspection GradleCompatible,GradleCompatible

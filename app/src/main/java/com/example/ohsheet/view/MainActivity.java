@@ -116,6 +116,8 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
             //Vô các bài hát
             case R.id.nav_songs:
                 Toast.makeText(this, "Clicked songs", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(getApplicationContext(),ListAllSheet.class);
+                startActivity(intent2);
                 break;
             //Vô các bài hát yêu thích
             case R.id.nav_favor:
