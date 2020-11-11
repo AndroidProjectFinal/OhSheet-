@@ -42,7 +42,7 @@ public class SongAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView textViewName;
         TextView textViewWriter;
-        ImageView imgSave;
+        final ImageView imgSave;
 
         if(convertView== null){
            convertView = activity.getLayoutInflater().inflate(layout,null);
@@ -57,11 +57,18 @@ public class SongAdapter extends BaseAdapter {
         }else {
             textViewName = (TextView) convertView.getTag(R.id.txtName);
             textViewWriter = (TextView) convertView.getTag(R.id.txtWriter);
-//            imgSave = (ImageView) convertView.getTag(R.id.imgSave);
+            imgSave = (ImageView) convertView.getTag(R.id.imgSave);
         }
         Song song = list.get(position);
         textViewName.setText(song.getTitle());
         textViewWriter.setText(song.getWriter());
+        imgSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgSave.setImageResource(R.drawable.starv);
+
+            }
+        });
         return convertView;
     }
 }
