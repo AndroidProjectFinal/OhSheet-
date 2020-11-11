@@ -9,8 +9,12 @@
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="406dp"
+        android:layout_height="661dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -124,38 +128,54 @@
                 android:hint="@string/linkMusic"
                 android:inputType="textPersonName"
                 android:textColorHint="#EFE9E9"
-                app:layout_constraintBottom_toTopOf="@+id/etContent"
+                app:layout_constraintBottom_toTopOf="@+id/btnAddContent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spGenre" />
 
-            <EditText
-                android:id="@+id/etContent"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
+            <Button
+                android:id="@+id/btnAddContent"
+                android:layout_width="129dp"
+                android:layout_height="54dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/etContent"
+                android:gravity="center"
                 android:inputType="textMultiLine"
-                android:textColorHint="#EDE8E8"
+                android:text="@string/addContent"
+                android:textColorHint="#121111"
                 app:layout_constraintBottom_toTopOf="@+id/btnSave"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.156"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etLinkMusic" />
 
             <Button
                 android:id="@+id/btnSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="129dp"
+                android:layout_height="54dp"
                 android:layout_marginBottom="17dp"
                 android:text="@string/btnSaveCreateSong"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.195"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etContent" />
+                app:layout_constraintTop_toBottomOf="@+id/btnAddContent" />
+
+            <TextView
+                android:id="@+id/txtAlert"
+                android:layout_width="191dp"
+                android:layout_height="48dp"
+                android:text="alert"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.922"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.836" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

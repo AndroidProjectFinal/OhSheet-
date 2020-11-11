@@ -36,18 +36,10 @@ public class Song {
         this.linkMusic = linkMusic;
     }
 
-    public Song(String title, String writer, String sheet) {
+    public Song(String id, String title, String writer) {
+        this.id = id;
         this.title = title;
         this.writer = writer;
-        this.sheet = sheet;
-    }
-
-    public Song(String title, String writer, String sheet, String linkMusic,String content) {
-        this.title = title;
-        this.writer = writer;
-        this.sheet = sheet;
-        this.linkMusic = linkMusic;
-        this.content = content;
     }
 
     public Song(String title, String writer, String sheet, String content, int level, List<Genre> listGenre, String createBy, String createDate, String linkMusic) {

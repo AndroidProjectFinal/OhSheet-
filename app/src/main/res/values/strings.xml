@@ -32,4 +32,5 @@
     <string name="deletesong">Delete</string>
     <string name="updategenre">Update</string>
     <string name="deletegenre">Delete</string>
+    <string name="addContent">Add Content</string>
 </resources>
