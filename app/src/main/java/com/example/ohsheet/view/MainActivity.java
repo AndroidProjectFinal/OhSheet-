@@ -1,6 +1,7 @@
 package com.example.ohsheet.view;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -8,10 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ohsheet.R;
@@ -38,6 +42,11 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ImageView searchBar;
+    private TextView textViewNav;
+    private MenuItem menuItem;
+
+    public static int REQUEST_CODE= 100;
+    public static int RESULT_CODE = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +64,11 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
         drawerLayout = findViewById(R.id.drawLayout);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Menu menu = navigationView.getMenu();
+        menuItem = menu.findItem(R.id.nav_login);
+        View header = navigationView.getHeaderView(0);
+        textViewNav = header.findViewById(R.id.textViewNavHeader);
+
 
 
         mRecyclerView = findViewById(R.id.recycleView);
@@ -66,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
         expandMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                drawerLayout.openDrawer(Gravity.START);
+                drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
         //Load dữ liệu genre lên màn hình chính
@@ -124,12 +138,33 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
                 break;
             //Vô login
             case R.id.nav_login:
-                Intent intent = new Intent(getApplicationContext(), ActivityAdmin.class);
-                startActivity(intent);
-                Toast.makeText(this, "Clicked Login", Toast.LENGTH_SHORT).show();
+
+                if(!textViewNav.getText().equals("Oh Sheet")){
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE);
+                    menuItem.setTitle("Login");
+                    textViewNav.setText("Oh Sheet");
+                    Toast.makeText(this, "Clicked LogOut", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE);
+                    Toast.makeText(this, "Clicked Login", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
-        drawerLayout.closeDrawer(Gravity.START);
+        drawerLayout.closeDrawer(Gravity.LEFT);
         return false;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==REQUEST_CODE && resultCode == RESULT_CODE){
+            String userName = data.getStringExtra("userName");
+            Log.i("AAAAAAAAAAA", userName);
+            textViewNav.setText(userName);
+            textViewNav.setTextSize(20);
+            menuItem.setTitle("Logout");
+        }
     }
 }
