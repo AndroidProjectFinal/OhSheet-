@@ -13,7 +13,6 @@ import android.widget.ListView;
 
 import com.example.ohsheet.R;
 import com.example.ohsheet.entity.Genre;
-import com.example.ohsheet.entity.Song;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -37,8 +36,6 @@ public class ActivityListGenre extends AppCompatActivity {
         final CollectionReference reference = firestore.collection("genre");
 
         registerForContextMenu(listViewGenre);
-
-
         reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -48,17 +45,13 @@ public class ActivityListGenre extends AppCompatActivity {
                     for(QueryDocumentSnapshot doc : snapshot){
                         Genre  genre = new Genre();
                         genre.setGenreName(doc.get("genreName").toString());
-
                         list.add(genre);
-
                     }
                     ArrayAdapter<Genre> adapter = new ArrayAdapter<>(ActivityListGenre.this,android.R.layout.simple_list_item_1,list);
                     listViewGenre.setAdapter(adapter);
                 }
             }
         });
-
-
     }
 
     @Override
@@ -70,9 +63,6 @@ public class ActivityListGenre extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-
-
-
         return super.onContextItemSelected(item);
     }
 

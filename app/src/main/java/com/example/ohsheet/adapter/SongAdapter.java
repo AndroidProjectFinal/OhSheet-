@@ -50,15 +50,14 @@ public class SongAdapter extends BaseAdapter {
            textViewWriter = convertView.findViewById(R.id.txtWriter);
            imgSave = convertView.findViewById(R.id.imgSave);
            convertView.setTag(R.id.txtName,textViewName);
-            convertView.setTag(R.id.txtWriter,textViewWriter);
-            convertView.setTag(R.id.imgSave,imgSave);
-
-
+           convertView.setTag(R.id.txtWriter,textViewWriter);
+           convertView.setTag(R.id.imgSave,imgSave);
         }else {
             textViewName = (TextView) convertView.getTag(R.id.txtName);
             textViewWriter = (TextView) convertView.getTag(R.id.txtWriter);
             imgSave = (ImageView) convertView.getTag(R.id.imgSave);
         }
+
         Song song = list.get(position);
         textViewName.setText(song.getTitle());
         textViewWriter.setText(song.getWriter());
@@ -66,9 +65,9 @@ public class SongAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 imgSave.setImageResource(R.drawable.starv);
-
             }
         });
+
         return convertView;
     }
 }

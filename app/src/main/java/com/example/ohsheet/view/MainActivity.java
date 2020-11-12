@@ -8,12 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ohsheet.R;
@@ -46,8 +44,6 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         searchBar = findViewById(R.id.searchBar);
         searchBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,15 +66,12 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
         expandMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                drawerLayout.openDrawer(Gravity.LEFT);
+                drawerLayout.openDrawer(Gravity.START);
             }
         });
         //Load dữ liệu genre lên màn hình chính
         firestore = FirebaseFirestore.getInstance();
         final CollectionReference reference = firestore.collection("genre");
-
-
-
 
         reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -136,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
                 Toast.makeText(this, "Clicked Login", Toast.LENGTH_SHORT).show();
                 break;
         }
-        drawerLayout.closeDrawer(Gravity.LEFT);
+        drawerLayout.closeDrawer(Gravity.START);
         return false;
     }
 }

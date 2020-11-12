@@ -37,7 +37,6 @@ public class ActivityListSong extends AppCompatActivity {
 
         registerForContextMenu(listViewSong);
 
-
         reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -47,18 +46,13 @@ public class ActivityListSong extends AppCompatActivity {
                     for(QueryDocumentSnapshot doc : snapshot){
                         Song  song = new Song();
                         song.setTitle(doc.get("title").toString());
-
                         list.add(song);
-
                     }
                     ArrayAdapter<Song> adapter = new ArrayAdapter<>(ActivityListSong.this,android.R.layout.simple_list_item_1,list);
                     listViewSong.setAdapter(adapter);
                 }
             }
         });
-
-
-
     }
 
     @Override
@@ -70,9 +64,6 @@ public class ActivityListSong extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-
-
-
         return super.onContextItemSelected(item);
     }
 }

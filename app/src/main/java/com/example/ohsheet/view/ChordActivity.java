@@ -1,5 +1,3 @@
-
-
 package com.example.ohsheet.view;
 
 import android.os.Bundle;
@@ -29,7 +27,6 @@ public class ChordActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private ChordAdapter adapter;
     private ArrayAdapter arrayAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

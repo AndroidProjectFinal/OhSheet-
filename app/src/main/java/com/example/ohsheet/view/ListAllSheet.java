@@ -10,9 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.ohsheet.R;
-import com.example.ohsheet.adapter.GenreAdapter;
 import com.example.ohsheet.adapter.SongAdapter;
-import com.example.ohsheet.entity.Genre;
 import com.example.ohsheet.entity.Song;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +27,7 @@ public class ListAllSheet extends AppCompatActivity {
     private List<Song> list;
     private SongAdapter songAdapter;
     private FirebaseFirestore firestore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +35,13 @@ public class ListAllSheet extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         firestore = FirebaseFirestore.getInstance();
         list = new ArrayList<>();
-        list.add(new Song("Canon in D","abc","mam"));
+
         final CollectionReference reference = firestore.collection("songs");
         reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     QuerySnapshot snapshots = task.getResult();
-
                     for(QueryDocumentSnapshot doc : snapshots){
                         Song song = new Song(
                                 doc.get("title").toString(),
@@ -72,10 +70,7 @@ public class ListAllSheet extends AppCompatActivity {
                 intent.putExtra("link", song.getLinkMusic());
                 intent.putExtra("content", song.getContent());
                 startActivity(intent);
-//aaaa
             }
         });
-
-
     }
 }

@@ -27,7 +27,6 @@ public class ChordAdapter extends RecyclerView.Adapter<ChordAdapter.ImageAdapter
         this.mUploads = mUploads;
     }
 
-
     @NonNull
     @Override
     public ChordAdapter.ImageAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,9 +43,6 @@ public class ChordAdapter extends RecyclerView.Adapter<ChordAdapter.ImageAdapter
                 .fit()
                 .centerCrop()
                 .into(holder.imageView);
-
-
-
     }
 
     @Override

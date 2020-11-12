@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +18,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ohsheet.R;
 import com.example.ohsheet.entity.Genre;
@@ -28,8 +26,6 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -39,9 +35,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Document;
-
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -62,7 +55,7 @@ public class ActivityCreateSong extends AppCompatActivity {
     private Spinner spGenre;
     private Uri imageUri;
     private TextView txtAlert;
-    private ArrayList<Uri> ImageList = new ArrayList<Uri>();
+    private ArrayList<Uri> ImageList = new ArrayList<>();
     private ProgressDialog progressDialog;
 
     private StorageReference storageRef;
@@ -95,7 +88,7 @@ public class ActivityCreateSong extends AppCompatActivity {
         arrayList.add("3");
         arrayList.add("4");
         arrayList.add("5");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, arrayList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, arrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         spLev.setAdapter(arrayAdapter);
 
@@ -110,9 +103,7 @@ public class ActivityCreateSong extends AppCompatActivity {
                     for(QueryDocumentSnapshot doc : snapshot){
                         Genre  genre = new Genre();
                         genre.setGenreName(doc.get("genreName").toString());
-
                         list.add(genre);
-
                     }
                     ArrayAdapter<Genre> adapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1,list);
                     spGenre.setAdapter(adapter);
@@ -127,10 +118,8 @@ public class ActivityCreateSong extends AppCompatActivity {
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
                 startActivityForResult(intent,PICK_IMAGE);
-
             }
         });
-
 
         btnAddImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,15 +128,12 @@ public class ActivityCreateSong extends AppCompatActivity {
             }
         });
 
-
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 uploadFile();
             }
         });
-
-
     }
 
     private void openFileChooser(){
@@ -157,12 +143,8 @@ public class ActivityCreateSong extends AppCompatActivity {
         startActivityForResult(intent,PICK_IMAGE_REQUEST);
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
-
-
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
             && data != null && data.getData()!=null){
@@ -171,30 +153,22 @@ public class ActivityCreateSong extends AppCompatActivity {
             Picasso.get().load(imageUri).into(imageView);
             imageView.setImageURI(imageUri);
 
-
         }else if(requestCode == PICK_IMAGE && resultCode == RESULT_OK
-                && data.getClipData() != null){
-
+                && data.getClipData() != null)
+        {
 
             int countClipData = data.getClipData().getItemCount();
             int currentImageSelect = 0;
 
-            while (currentImageSelect<countClipData){
-
+            while (currentImageSelect<countClipData)
+            {
                 imageUri = data.getClipData().getItemAt(currentImageSelect).getUri();
                 ImageList.add(imageUri);
-
                 currentImageSelect++;
-
             }
-
             txtAlert.setVisibility(View.VISIBLE);
             txtAlert.setText("You have selected" +ImageList.size()+"images");
-
         }
-
-        Log.i("list of image", getFileExtension(imageUri).toString());
-
     }
 
     private String getFileExtension(Uri uri){
@@ -207,15 +181,10 @@ public class ActivityCreateSong extends AppCompatActivity {
 
     private void uploadFile(){
         progressDialog.show();
-
-
         StorageReference imageFolder = FirebaseStorage.getInstance().getReference().child("Content");
         for(upload_count=0;upload_count<ImageList.size();upload_count++){
-
             Uri IndividualImage = ImageList.get(upload_count);
             final StorageReference imageName = imageFolder.child("Image"+IndividualImage.getLastPathSegment());
-
-
             imageName.putFile(IndividualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -229,14 +198,9 @@ public class ActivityCreateSong extends AppCompatActivity {
                     });
                 }
             });
-
         }
-
         Calendar c = Calendar.getInstance();
         final  String date = c.get(Calendar.HOUR) +":"+ c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND) +"----"+ c.get(Calendar.DATE) +"/" + c.get(Calendar.MONTH) +"/" + c.get(Calendar.YEAR);
-
-
-
         final CollectionReference reference = firestore.collection("songs");
         if (imageUri != null)
         {
@@ -264,7 +228,6 @@ public class ActivityCreateSong extends AppCompatActivity {
 
                         Log.e("TAG", "then: " + downloadUri.toString());
                         Song song = new Song(
-
                                 etTitleSong.getText().toString().trim(),
                                 etWriter.getText().toString().trim(),
                                 downloadUri.toString(),
@@ -277,26 +240,20 @@ public class ActivityCreateSong extends AppCompatActivity {
                         reference.add(song);
                     } else
                     {
-                        Log.i("TAG", "tai mat loz");
+                        Log.i("TAG", "Error");
                     }
                 }
             });
         }
-        Log.i("listgfgrsfv", stringUrl.toString());
     }
 
     private void StoreLink(String url) {
-
         CollectionReference reference = firestore.collection("Content");
         HashMap<String,String> hashMap = new HashMap<>();
         hashMap.put("Imglink",url);
-
         reference.add(hashMap);
-
         progressDialog.dismiss();
         txtAlert.setText("Successfully");
-
-
     }
 
 

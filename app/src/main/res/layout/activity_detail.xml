@@ -11,6 +11,7 @@
         android:layout_width="324dp"
         android:layout_height="385dp"
         android:layout_marginTop="120dp"
+        android:contentDescription="@string/addContent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +45,7 @@
         android:layout_height="19dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
-        android:text="Link"
+        android:text="@string/link"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtWriter" />
 

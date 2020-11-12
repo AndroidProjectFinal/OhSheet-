@@ -33,4 +33,10 @@
     <string name="updategenre">Update</string>
     <string name="deletegenre">Delete</string>
     <string name="addContent">Add Content</string>
+    <string name="chords">Chords</string>
+    <string name="addImg">Add Image</string>
+    <string name="alert">Alert</string>
+    <string name="imageContent">image</string>
+    <string name="link">Link</string>
+    <string name="textNav">Oh Sheet</string>
 </resources>

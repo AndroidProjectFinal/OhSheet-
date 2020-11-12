@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.ohsheet.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,16 +30,19 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
         txtTitle = findViewById(R.id.txtTitle);
         txtWriter = findViewById(R.id.txtWriter);
         txtLink = findViewById(R.id.txtLinkMusic);
         imgView = findViewById(R.id.imgSheet);
+
         listItem = new ArrayList();
         listItem.add("Sheet");
         listItem.add("Chord");
         spinner = findViewById(R.id.spinner);
         adapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_dropdown_item_1line,listItem);
         spinner.setAdapter(adapter);
+
         Intent intent = new Intent();
         Bundle bundle = getIntent().getExtras();
         String message = bundle.getString("title");
@@ -54,7 +56,7 @@ public class DetailActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(spinner.getSelectedItem().toString() == "Sheet"){
+                if(spinner.getSelectedItem().toString().equals("Sheet")){
                     Glide.with(getApplicationContext())
                             .load(sheet)
                             .into(imgView);
@@ -64,17 +66,11 @@ public class DetailActivity extends AppCompatActivity {
                             .into(imgView);
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
-
-
     }
-
-
     public void onClick(View view) {
         Intent intent = new Intent(getApplicationContext(),YoutubeActivity.class);
         startActivity(intent);

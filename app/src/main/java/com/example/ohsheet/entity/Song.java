@@ -1,7 +1,5 @@
 package com.example.ohsheet.entity;
 
-import java.util.List;
-
 public class Song {
     private String id;
     private String title;
@@ -17,25 +15,6 @@ public class Song {
     public Song() {
     }
 
-    public Song(String title, String writer, String sheet, int level, String createDate, String linkMusic) {
-        this.title = title;
-        this.writer = writer;
-        this.sheet = sheet;
-        this.level = level;
-        this.createDate = createDate;
-        this.linkMusic = linkMusic;
-    }
-
-    public Song(String title, String writer, String sheet, String content, int level, String createDate, String linkMusic) {
-        this.title = title;
-        this.writer = writer;
-        this.sheet = sheet;
-        this.content = content;
-        this.level = level;
-        this.createDate = createDate;
-        this.linkMusic = linkMusic;
-    }
-
     public Song(String title, String writer, String sheet,String linkMusic, String content) {
         this.title = title;
         this.writer = writer;
@@ -43,12 +22,6 @@ public class Song {
         this.linkMusic = linkMusic;
         this.content = content;
 
-    }
-
-    public Song(String id, String title, String writer) {
-        this.id = id;
-        this.title = title;
-        this.writer = writer;
     }
 
     public Song(String title, String writer, String sheet, String content, int level, String listGenre, String createBy, String createDate, String linkMusic) {

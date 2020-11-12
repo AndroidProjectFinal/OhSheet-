@@ -18,8 +18,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/txtTitleAdmin2"
                 android:layout_width="254dp"
@@ -52,7 +51,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/etWriter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtTitleAdmin2" />
+                app:layout_constraintTop_toBottomOf="@+id/txtTitleAdmin2"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/etWriter"
@@ -69,7 +69,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/spLev"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etTitleSong" />
+                app:layout_constraintTop_toBottomOf="@+id/etTitleSong"
+                android:autofillHints="" />
 
             <Spinner
                 android:id="@+id/spLev"
@@ -88,7 +89,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="19dp"
                 android:layout_marginEnd="81dp"
-                android:text="Add Image"
+                android:text="@string/addImg"
                 app:layout_constraintBottom_toBottomOf="@+id/spLev"
                 app:layout_constraintEnd_toStartOf="@+id/spLev"
                 app:layout_constraintStart_toStartOf="parent"
@@ -98,6 +99,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:contentDescription="@string/imageContent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
@@ -131,7 +133,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/btnAddContent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spGenre" />
+                app:layout_constraintTop_toBottomOf="@+id/spGenre"
+                android:autofillHints="" />
 
             <Button
                 android:id="@+id/btnAddContent"
@@ -167,7 +170,7 @@
                 android:id="@+id/txtAlert"
                 android:layout_width="191dp"
                 android:layout_height="48dp"
-                android:text="alert"
+                android:text="@string/alert"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

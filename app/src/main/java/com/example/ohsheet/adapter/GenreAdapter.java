@@ -27,12 +27,10 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ImageAdapter
         this.onClick = onClick;
     }
 
-
     @NonNull
     @Override
     public ImageAdapterHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.customlayout_main, parent, false);
-
         return new ImageAdapterHolder(view, onClick);
     }
 
@@ -44,7 +42,6 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ImageAdapter
                 .fit()
                 .centerCrop()
                 .into(holder.imageView);
-
     }
 
     @Override

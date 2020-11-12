@@ -2,7 +2,6 @@ package com.example.ohsheet.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -54,9 +53,6 @@ public class ActivityAdmin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
 
     }
 }

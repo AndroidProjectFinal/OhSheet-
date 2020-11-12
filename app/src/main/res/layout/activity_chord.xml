@@ -13,7 +13,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="40dp"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="Chords"
+        android:text="@string/chords"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
