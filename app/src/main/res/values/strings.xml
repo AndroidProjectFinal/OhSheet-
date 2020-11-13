@@ -39,4 +39,5 @@
     <string name="imageContent">image</string>
     <string name="link">Link</string>
     <string name="textNav">Oh Sheet</string>
+    <string name="textViewLv">Độ khó</string>
 </resources>

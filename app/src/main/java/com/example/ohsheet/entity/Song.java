@@ -1,7 +1,7 @@
 package com.example.ohsheet.entity;
 
 public class Song {
-    private String id;
+
     private String title;
     private String writer;
     private String sheet;
@@ -36,13 +36,6 @@ public class Song {
         this.linkMusic = linkMusic;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
