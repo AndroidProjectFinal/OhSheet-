@@ -5,15 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.ohsheet.R;
 import com.example.ohsheet.adapter.SongAdapter;
 import com.example.ohsheet.entity.Song;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -27,7 +37,10 @@ public class ListAllSheet extends AppCompatActivity {
     private List<Song> list;
     private SongAdapter songAdapter;
     private FirebaseFirestore firestore;
-
+    private EditText txtSearch;
+    private ImageView imgSearch;
+   private List<Song> list2;
+   private String text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +48,10 @@ public class ListAllSheet extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         firestore = FirebaseFirestore.getInstance();
         list = new ArrayList<>();
+        txtSearch = findViewById(R.id.txtSearchSong);
 
-        final CollectionReference reference = firestore.collection("songs");
+        imgSearch = findViewById(R.id.imgSearch);
+        CollectionReference reference = firestore.collection("songs");
         reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -52,12 +67,48 @@ public class ListAllSheet extends AppCompatActivity {
                         );
                         list.add(song);
                     }
-                    songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list);
+                   songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list);
                     listView.setAdapter(songAdapter);
                 }
             }
         });
 
+        imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list2= new ArrayList<>();
+                CollectionReference reference = firestore.collection("songs");
+                reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            QuerySnapshot snapshots = task.getResult();
+                            for(QueryDocumentSnapshot doc : snapshots){
+                                Song song = new Song(
+                                        doc.get("title").toString(),
+                                        doc.get("writer").toString(),
+                                        doc.get("sheet").toString(),
+                                        doc.get("linkMusic").toString(),
+                                        doc.get("content").toString()
+                                );
+                                list.add(song);
+                            }
+                            text = txtSearch.getText().toString();
+                            for(int i =0;i<list.size();i++){
+                               if(list.get(i).getTitle().trim().contains(text.trim())){
+                                    Log.d("og",text+"acb");
+                                    list2.add(list.get(i));
+                                }
+                            }
+
+                            songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list2);
+                            listView.setAdapter(songAdapter);
+                        }
+                    }
+                });
+
+            }
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -14,16 +14,22 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ohsheet.R;
 import com.example.ohsheet.adapter.GenreAdapter;
+import com.example.ohsheet.adapter.SongAdapter;
 import com.example.ohsheet.entity.Genre;
+import com.example.ohsheet.entity.Song;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -44,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
     private ImageView searchBar;
     private TextView textViewNav;
     private MenuItem menuItem;
+    private ListAllSheet listAllSheet;
+    private SongAdapter songAdapter;
 
     public static int REQUEST_CODE= 100;
     public static int RESULT_CODE = 200;
@@ -53,14 +61,8 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        searchBar = findViewById(R.id.searchBar);
-        searchBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Phần search
-            }
-        });
 
+        listAllSheet = new ListAllSheet();
         drawerLayout = findViewById(R.id.drawLayout);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -166,5 +168,41 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
             textViewNav.setTextSize(20);
             menuItem.setTitle("Logout");
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.searchmenu,menu);
+        MenuItem item = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                processSearch(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                processSearch(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void processSearch(String s){
+       FirebaseRecyclerOptions<Song> options = new FirebaseRecyclerOptions.Builder<Song>()
+               .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"),Song.class).build();
+
+
+
+
+
     }
 }

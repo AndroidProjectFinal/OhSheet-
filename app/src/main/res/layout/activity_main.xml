@@ -35,16 +35,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/searchBar"
-            android:layout_width="27dp"
-            android:layout_height="27dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:src="@drawable/search"
-            />
-
-        <ImageView
             android:id="@+id/expandedMenu"
             android:layout_width="30dp"
             android:layout_height="30dp"
