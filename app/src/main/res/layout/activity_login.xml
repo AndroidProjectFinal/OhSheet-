@@ -1,142 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/android"
     tools:context=".view.LoginActivity">
 
-    <TextView
-        android:id="@+id/textViewUser"
-        android:layout_width="133dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="32dp"
-        android:text="I'm not an Admin"
-        android:textAlignment="center"
-        android:textColor="#E91E63"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.223"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbRemember" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="101dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text="Password:"
-        android:textColor="#070000"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="101dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="148dp"
-        android:text="UserName: "
-        android:textColor="#070000"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:ems="10"
-        android:hint="userName"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.309"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etPassWord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="PassWord"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.309"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/etUserName" />
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="332dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="152dp"
-        android:background="#C85687"
-        android:backgroundTintMode="src_over"
-        android:fontFamily="@font/alice"
-        android:text="Login"
-        android:textColor="#ECEEEF"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassWord" />
-
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="332dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:background="#C85687"
-        android:fontFamily="@font/alike"
-        android:text="Register"
-        android:textColor="#F1F3F4"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="186dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="52dp"
-        android:fontFamily="@font/aclonica"
-        android:text="Login "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike"
+        android:text="@string/txtLogin"
+        android:padding="70dp"
         android:textAlignment="center"
-        android:textColor="#E91E63"
         android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
+
+    <LinearLayout
+        android:id="@+id/linerLayoutName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:layout_below="@id/textView4">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_profile"
+            />
+        <EditText
+            android:id="@+id/etUserName"
+            android:layout_width="291dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="@string/hintName"
+            android:inputType="textPersonName"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linerLayoutPassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/linerLayoutName"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_baseline_password"
+            />
+        <EditText
+            android:id="@+id/etPassWord"
+            android:layout_width="293dp"
+            android:layout_height="match_parent"
+            android:hint="@string/hintPass"
+            android:inputType="textPassword"
+            />
+    </LinearLayout>
 
     <CheckBox
         android:id="@+id/cbRemember"
-        android:layout_width="197dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
-        android:text="Remember me "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassWord" />
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/linerLayoutPassword"
+        android:layout_centerHorizontal="true"
+        android:text="@string/checkRem"
+        />
 
-    <TextView
-        android:id="@+id/textViewAdmin"
-        android:layout_width="133dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="32dp"
-        android:text="I'm an Admin?"
-        android:textAlignment="center"
-        android:textColor="#E91E63"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.816"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbRemember" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/linerLayoutAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cbRemember"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textViewUser"
+            android:layout_width="130dp"
+            android:layout_height="34dp"
+            android:text="@string/notAdmin"
+            android:layout_marginRight="70dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorLightBlue"
+            android:visibility="invisible"
+            />
+        <TextView
+            android:id="@+id/textViewAdmin"
+            android:layout_width="130dp"
+            android:layout_height="34dp"
+            android:text="@string/isAdmin"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/linerLayoutAdmin"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorLightBlue"
+        android:backgroundTintMode="src_over"
+        android:fontFamily="@font/alice"
+        android:text="@string/txtLogin"
+        android:textColor="#ECEEEF"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/btnLogin"
+        android:background="@color/colorLightBlue"
+        android:fontFamily="@font/alike"
+        android:text="@string/txtRegister"
+        android:textColor="#F1F3F4"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteY="675dp" />
+
+
+</RelativeLayout>

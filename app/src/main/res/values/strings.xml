@@ -23,7 +23,15 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
+    <string name="txtLogin">Login</string>
+    <string name="hintName">Username</string>
+    <string name="hintPass">Password</string>
+    <string name="hintConfirmPass">Confirm Password</string>
+    <string name="checkRem">Remember me</string>
+    <string name="notAdmin">I\'m not an Admin</string>
+    <string name="isAdmin">I\'m an Admin?</string>
+    <string name="txtRegister">Register</string>
+    <string name="txtCreate">Create Account</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
