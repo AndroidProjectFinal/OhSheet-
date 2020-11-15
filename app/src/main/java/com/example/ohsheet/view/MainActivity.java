@@ -113,7 +113,8 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
     @Override
     public void onItemClick(int position) {
         Toast.makeText(this, "Clicked - " + position, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(),ListAllSheet.class);
+        Intent intent = new Intent(getApplicationContext(),ListSheetbyGenre.class);
+        intent.putExtra("genre",position);
         startActivity(intent);
     }
 

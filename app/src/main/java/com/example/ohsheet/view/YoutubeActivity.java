@@ -3,6 +3,8 @@ package com.example.ohsheet.view;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.ohsheet.R;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 public class YoutubeActivity extends AppCompatActivity {
@@ -13,5 +15,6 @@ public class YoutubeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_youtube);
         YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
+
     }
 }

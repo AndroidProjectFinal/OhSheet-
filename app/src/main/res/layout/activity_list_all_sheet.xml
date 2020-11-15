@@ -18,7 +18,7 @@
         android:gravity="end">
 
         <EditText
-            android:id="@+id/txtSearchSong"
+            android:id="@+id/txtSearchSong2"
             android:layout_width="370dp"
             android:layout_height="match_parent"
             android:ems="10"
@@ -28,7 +28,7 @@
             tools:layout_editor_absoluteY="16dp" />
 
         <ImageView
-            android:id="@+id/imgSearch"
+            android:id="@+id/imgSearch2"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_baseline_search_24"

@@ -25,27 +25,30 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListAllSheet extends AppCompatActivity {
+public class ListSheetbyGenre extends AppCompatActivity {
     private ListView listView;
     private List<Song> list;
     private SongAdapter songAdapter;
     private FirebaseFirestore firestore;
     private EditText txtSearch;
     private ImageView imgSearch;
-   private List<Song> list2;
-   private String text;
+    private List<Song> list2;
+    private String text;
+    private int genID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_all_sheet);
-        listView = findViewById(R.id.listView);
+        setContentView(R.layout.activity_list_sheetby_genre);
+        listView = findViewById(R.id.listSheetGenre);
         firestore = FirebaseFirestore.getInstance();
+        txtSearch = findViewById(R.id.txtSearchSongs);
+        imgSearch = findViewById(R.id.imageViewbyGenre);
         list = new ArrayList<>();
-        txtSearch = findViewById(R.id.txtSearchSong2);
+        Bundle bundle = getIntent().getExtras();
 
-        imgSearch = findViewById(R.id.imgSearch2);
-        CollectionReference reference = firestore.collection("songs");
-        reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        genID = bundle.getInt("genre");
+        firestore.collection("songs").whereEqualTo("listGenre",genID)
+        .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
@@ -60,7 +63,7 @@ public class ListAllSheet extends AppCompatActivity {
                         );
                         list.add(song);
                     }
-                   songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list);
+                    songAdapter = new SongAdapter(ListSheetbyGenre.this,R.layout.customlayout,list);
                     listView.setAdapter(songAdapter);
                 }
             }
@@ -70,8 +73,8 @@ public class ListAllSheet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 list2= new ArrayList<>();
-                CollectionReference reference = firestore.collection("songs");
-                reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                firestore.collection("songs").whereEqualTo("listGenre",1)
+                        .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
@@ -88,13 +91,13 @@ public class ListAllSheet extends AppCompatActivity {
                             }
                             text = txtSearch.getText().toString();
                             for(int i =0;i<list.size();i++){
-                               if(list.get(i).getTitle().trim().contains(text.trim())){
+                                if(list.get(i).getTitle().trim().contains(text.trim())){
                                     Log.d("og",text+"acb");
                                     list2.add(list.get(i));
                                 }
                             }
 
-                            songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list2);
+                            songAdapter = new SongAdapter(ListSheetbyGenre.this,R.layout.customlayout,list2);
                             listView.setAdapter(songAdapter);
                         }
                     }
@@ -117,4 +120,4 @@ public class ListAllSheet extends AppCompatActivity {
             }
         });
     }
-}
+    }
