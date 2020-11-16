@@ -11,16 +11,20 @@ public class Song {
     private String createBy;
     private String createDate;
     private String linkMusic;
+    private int likeQuantity;
+
+
 
     public Song() {
     }
 
-    public Song(String title, String writer, String sheet,String linkMusic, String content) {
+    public Song(String title, String writer, String sheet,String linkMusic, String content, int like) {
         this.title = title;
         this.writer = writer;
         this.sheet = sheet;
         this.linkMusic = linkMusic;
         this.content = content;
+        this.likeQuantity = like;
 
     }
 
@@ -108,7 +112,13 @@ public class Song {
     public void setLinkMusic(String linkMusic) {
         this.linkMusic = linkMusic;
     }
+    public int getLikeQuantity() {
+        return likeQuantity;
+    }
 
+    public void setLikeQuantity(int likeQuantity) {
+        this.likeQuantity = likeQuantity;
+    }
     @Override
     public String toString() {
         return title;

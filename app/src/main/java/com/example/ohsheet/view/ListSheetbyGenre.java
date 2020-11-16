@@ -59,7 +59,8 @@ public class ListSheetbyGenre extends AppCompatActivity {
                                 doc.get("writer").toString(),
                                 doc.get("sheet").toString(),
                                 doc.get("linkMusic").toString(),
-                                doc.get("content").toString()
+                                doc.get("content").toString(),
+                                doc.getLong("like").intValue()
                         );
                         list.add(song);
                     }
@@ -85,7 +86,8 @@ public class ListSheetbyGenre extends AppCompatActivity {
                                         doc.get("writer").toString(),
                                         doc.get("sheet").toString(),
                                         doc.get("linkMusic").toString(),
-                                        doc.get("content").toString()
+                                        doc.get("content").toString(),
+                                        doc.getLong("like").intValue()
                                 );
                                 list.add(song);
                             }

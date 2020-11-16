@@ -17,6 +17,7 @@ import com.example.ohsheet.adapter.SongAdapter;
 import com.example.ohsheet.entity.Song;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -32,6 +33,7 @@ public class ListAllSheet extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private EditText txtSearch;
     private ImageView imgSearch;
+
    private List<Song> list2;
    private String text;
     @Override
@@ -56,7 +58,8 @@ public class ListAllSheet extends AppCompatActivity {
                                 doc.get("writer").toString(),
                                 doc.get("sheet").toString(),
                                 doc.get("linkMusic").toString(),
-                                doc.get("content").toString()
+                                doc.get("content").toString(),
+                                doc.getLong("like").intValue()
                         );
                         list.add(song);
                     }
@@ -82,7 +85,8 @@ public class ListAllSheet extends AppCompatActivity {
                                         doc.get("writer").toString(),
                                         doc.get("sheet").toString(),
                                         doc.get("linkMusic").toString(),
-                                        doc.get("content").toString()
+                                        doc.get("content").toString(),
+                                        (doc.getLong("like").intValue())
                                 );
                                 list.add(song);
                             }

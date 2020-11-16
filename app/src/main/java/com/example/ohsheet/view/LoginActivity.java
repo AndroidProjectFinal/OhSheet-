@@ -137,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(docs.get("username").toString().equals(userName) && docs.get("password").toString().equals(passWord)){
 
                             if(parentNameDb.equals("users")){
-                                Intent intent = new Intent();
+                                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                 intent.putExtra("userName", userName);
                                 setResult(MainActivity.RESULT_CODE, intent);
                             }
