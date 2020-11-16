@@ -32,13 +32,13 @@
 
     <ImageView
         android:id="@+id/imgSave"
-        android:layout_width="32dp"
-        android:layout_height="37dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/star" />
+        app:srcCompat="@drawable/plus" />
 
     <TextView
         android:id="@+id/txtLike"

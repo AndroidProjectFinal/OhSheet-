@@ -2,16 +2,16 @@ package com.example.ohsheet.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
 import com.example.ohsheet.R;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 public class YoutubeActivity extends AppCompatActivity {
 
-    private String VIDEO_KEY;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,14 +19,17 @@ public class YoutubeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_youtube);
 
         Bundle bundle = getIntent().getExtras();
-        VIDEO_KEY = bundle.getString("linkVideo");
+
+        final String VIDEO_KEY = bundle.getString("linkVideo");
+        Log.i("TAG", VIDEO_KEY);
         YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(YouTubePlayer youTubePlayer) {
-                super.onReady(youTubePlayer);
+                youTubePlayer.loadVideo(VIDEO_KEY, 0);
             }
         });
-        getLifecycle().addObserver(youTubePlayerView);
+        youTubePlayerView.enterFullScreen();
+//        getLifecycle().addObserver(youTubePlayerView);
     }
 }

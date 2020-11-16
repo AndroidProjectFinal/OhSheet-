@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
         navigationView.setNavigationItemSelectedListener(this);
         Menu menu = navigationView.getMenu();
         menuItem = menu.findItem(R.id.nav_login);
+
+
         View header = navigationView.getHeaderView(0);
         textViewNav = header.findViewById(R.id.textViewNavHeader);
 

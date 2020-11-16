@@ -78,6 +78,8 @@ public class SongAdapter extends BaseAdapter {
 //        View header = navigationView.getHeaderView(0);
 //        textNav = header.findViewById(R.id.textViewNavHeader);
 
+
+
         imgSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

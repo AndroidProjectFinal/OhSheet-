@@ -27,6 +27,7 @@
     <string name="hintName">Username</string>
     <string name="hintPass">Password</string>
     <string name="hintConfirmPass">Confirm Password</string>
+    <string name="hintSong">Name song</string>
     <string name="checkRem">Remember me</string>
     <string name="notAdmin">I\'m not an Admin</string>
     <string name="isAdmin">I\'m an Admin?</string>

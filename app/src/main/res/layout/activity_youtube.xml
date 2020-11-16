@@ -10,7 +10,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        app:videoId="y_6aSG2yfe8"
-        app:autoPlay="true"
         app:showFullScreenButton="false" />
 </LinearLayout>

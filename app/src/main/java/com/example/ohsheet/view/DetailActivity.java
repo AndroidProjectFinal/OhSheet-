@@ -25,6 +25,7 @@ public class DetailActivity extends AppCompatActivity {
     private ArrayAdapter adapter;
     private List listItem;
     private Spinner spinner;
+    private String linkYou;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class DetailActivity extends AppCompatActivity {
         String writer = bundle.getString("writer");
         final String sheet = bundle.getString("sheet");
         final String content = bundle.getString("content");
-        txtLink.setText(link);
+        linkYou = link;
         txtTitle.setText(message);
         txtWriter.setText(writer);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -73,7 +74,7 @@ public class DetailActivity extends AppCompatActivity {
     }
     public void onClick(View view) {
         Intent intent = new Intent(getApplicationContext(),YoutubeActivity.class);
-        intent.putExtra("linkVideo", txtLink.getText());
+        intent.putExtra("linkVideo", linkYou);
         startActivity(intent);
     }
 }

@@ -63,7 +63,7 @@ public class ListAllSheet extends AppCompatActivity {
                         );
                         list.add(song);
                     }
-                   songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list);
+                    songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list);
                     listView.setAdapter(songAdapter);
                 }
             }

@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/linerLayoutList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:background="@color/colorLightBlue"
         android:gravity="end">
@@ -22,7 +22,7 @@
             android:layout_width="370dp"
             android:layout_height="match_parent"
             android:ems="10"
-            android:hint="name song"
+            android:hint="@string/hintSong"
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="136dp"
             tools:layout_editor_absoluteY="16dp" />

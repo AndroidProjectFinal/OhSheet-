@@ -16,6 +16,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.ohsheet.R;
+import com.example.ohsheet.adapter.SongAdapter;
+import com.example.ohsheet.adapter.SongAdminAdapter;
 import com.example.ohsheet.entity.Song;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,8 +31,9 @@ import java.util.List;
 
 public class ActivityListSong extends AppCompatActivity{
     private FirebaseFirestore firestore;
-    private ArrayAdapter<Song> adapter;
+    private SongAdminAdapter adapter;
     private ListView listViewSong;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,15 +52,20 @@ public class ActivityListSong extends AppCompatActivity{
                     QuerySnapshot snapshot = task.getResult();
                     List<Song> list = new ArrayList<>();
                     for(QueryDocumentSnapshot doc : snapshot){
-                        Song  song = new Song();
+                        Song song = new Song();
                         song.setTitle(doc.get("title").toString());
+                        song.setWriter(doc.get("writer").toString());
+                        song.setLevel(Integer.parseInt(doc.get("level").toString()));
+                        song.setListGenre(doc.get("listGenre").toString());
+                        song.setLinkMusic(doc.get("linkMusic").toString());
                         list.add(song);
                     }
-                    adapter = new ArrayAdapter<>(ActivityListSong.this,android.R.layout.simple_list_item_1,list);
+                    adapter = new SongAdminAdapter(ActivityListSong.this,R.layout.customlayout_admin_song,list);
                     listViewSong.setAdapter(adapter);
                 }
             }
         });
+
     }
 
     @Override
@@ -71,28 +79,18 @@ public class ActivityListSong extends AppCompatActivity{
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
         final CollectionReference reference = firestore.collection("song");
         if(item.getTitle().equals("Update")){
-            final Intent intent = new Intent(ActivityListSong.this, ActivityCreateGenre.class);
+            Song song = (Song) adapter.getItem(info.position);
+            Intent intent = new Intent(ActivityListSong.this, ActivityCreateSong.class);
             intent.putExtra("updateSong", "Update");
-            reference.whereEqualTo("title", adapter.getItem(info.position).toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if(task.isSuccessful()){
-
-                        for(QueryDocumentSnapshot doc : task.getResult()){
-                            intent.putExtra("nameSong", doc.get("title").toString());
-                            intent.putExtra("writerSong", doc.get("writer").toString());
-                            intent.putExtra("levelSong", doc.get("level").toString());
-                            intent.putExtra("genreSong", doc.get("listGenre").toString());
-                            intent.putExtra("linkSong", doc.get("linkMusic").toString());
-                            setResult(ActivityCreateSong.RESULT_CODE_SONG, intent);
-                        }
-                        startActivity(intent);
-                        finish();
-                    }
-                }
-            });
+            intent.putExtra("title", song.getTitle());
+            intent.putExtra("writer", song.getWriter());
+            intent.putExtra("sheet", song.getSheet());
+            intent.putExtra("link", song.getLinkMusic());
+            intent.putExtra("content", song.getContent());
+            startActivity(intent);
 
         }
         if(item.getTitle().equals("Delete")){

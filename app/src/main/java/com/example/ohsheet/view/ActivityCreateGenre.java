@@ -94,7 +94,7 @@ public class ActivityCreateGenre extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData()!=null){
-                imageUri = data.getData();
+            imageUri = data.getData();
 
             Picasso.get().load(imageUri).into(imageView);
             imageView.setImageURI(imageUri);

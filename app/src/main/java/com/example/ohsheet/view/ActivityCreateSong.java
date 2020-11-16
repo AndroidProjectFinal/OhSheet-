@@ -112,11 +112,11 @@ public class ActivityCreateSong extends AppCompatActivity {
 
         final Bundle bundle = getIntent().getExtras();
         if(bundle.getString("updateSong").equals("Update")){
-            etTitleSong.setText(bundle.getString("nameSong"));
-            etWriter.setText(bundle.getString("writerSong"));
-            spLev.setSelection(Integer.parseInt(bundle.getString("levelSong")));
-            spGenre.setSelection(Integer.parseInt(bundle.getString("genreSong")));
-            etLinkMusic.setText(bundle.getString("linkSong"));
+            etTitleSong.setText(bundle.getString("title"));
+//            etWriter.setText(bundle.getString("writerSong"));
+//            spLev.setSelection(Integer.parseInt(bundle.getString("levelSong")));
+//            spGenre.setSelection(Integer.parseInt(bundle.getString("genreSong")));
+//            etLinkMusic.setText(bundle.getString("linkSong"));
         }
 
         btnAddContent.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +147,7 @@ public class ActivityCreateSong extends AppCompatActivity {
                     uploadFile();
                 }
                 if(bundle.getString("updateSong").equals("Update")){
-                    updateFile(bundle.getString("nameSong"));
+//                    updateFile(bundle.getString("nameSong"));
 
                 }
             }
@@ -249,19 +249,6 @@ public class ActivityCreateSong extends AppCompatActivity {
             imageViewContent.setImageURI(contentUri);
 
 
-//            Picasso.get().load(contentUri).into(imageView);
-//            imageView.setImageURI(imageUri);
-//            int countClipData = data.getClipData().getItemCount();
-//            int currentImageSelect = 0;
-//
-//            while (currentImageSelect<countClipData)
-//            {
-//                imageUri = data.getClipData().getItemAt(currentImageSelect).getUri();
-//                ImageList.add(imageUri);
-//                currentImageSelect++;
-//            }
-//            txtAlert.setVisibility(View.VISIBLE);
-//            txtAlert.setText("You have selected" +ImageList.size()+"images");
         }
     }
 
