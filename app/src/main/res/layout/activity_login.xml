@@ -87,7 +87,6 @@
             android:text="@string/notAdmin"
             android:layout_marginRight="70dp"
             android:textAlignment="center"
-            android:textColor="@color/colorLightBlue"
             android:visibility="invisible"
             />
         <TextView

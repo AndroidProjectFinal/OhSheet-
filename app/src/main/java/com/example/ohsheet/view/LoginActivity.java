@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        cbRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        cbRemember.setOnCheckedChangeListener(  new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(compoundButton.isChecked()){

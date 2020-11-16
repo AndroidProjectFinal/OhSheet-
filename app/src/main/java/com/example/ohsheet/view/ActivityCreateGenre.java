@@ -10,6 +10,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -25,9 +28,11 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class ActivityCreateGenre extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
+
     private EditText etNameGenre;
     private Button btnAddImage;
     private Button btnSave;
@@ -42,6 +47,7 @@ public class ActivityCreateGenre extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_genre);
+
 
         btnAddImage = findViewById(R.id.btnAddImage);
         btnSave = findViewById(R.id.btnSave);
@@ -58,23 +64,30 @@ public class ActivityCreateGenre extends AppCompatActivity {
             }
         });
 
+
+        final Bundle bundle = getIntent().getExtras();
+        if(bundle.getString("updateGenre").equals("Update")){
+            etNameGenre.setText(bundle.getString("genreName"));
+        }
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadFile();
-                finish();
+                if(bundle.getString("updateGenre").equals("Create")){
+                    uploadFile();
+                    Toast.makeText(ActivityCreateGenre.this, "Create Successfully!", Toast.LENGTH_SHORT).show();
+                }
+                if(bundle.getString("updateGenre").equals("Update")){
+                    updateFile(bundle.getString("genreName"));
+
+                }
             }
         });
-
-
     }
 
-    private void openFileChooser(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,PICK_IMAGE_REQUEST);
-    }
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -88,11 +101,59 @@ public class ActivityCreateGenre extends AppCompatActivity {
         }
     }
 
-    private String getFileExtension(Uri uri){
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
+
+    private void updateFile(String genreName) {
+        final CollectionReference reference = firestore.collection("genre");
+        reference.whereEqualTo("genreName", genreName).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(final QueryDocumentSnapshot doc: task.getResult()){
+                        if (imageUri != null)
+                        {
+                            final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
+                                    + "." +getFileExtension(imageUri));
+                            fileReference.putFile(imageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
+                            {
+                                @Override
+                                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
+                                {
+                                    if (!task.isSuccessful())
+                                    {
+                                        throw task.getException();
+                                    }
+                                    return fileReference.getDownloadUrl();
+                                }
+                            }).addOnCompleteListener(new OnCompleteListener<Uri>()
+                            {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task)
+                                {
+                                    if (task.isSuccessful())
+                                    {
+                                        Uri downloadUri = task.getResult();
+                                        Log.e("TAG", "then: " + downloadUri.toString());
+                                        Genre genre = new Genre(etNameGenre.getText().toString().trim(),
+                                                downloadUri.toString());
+                                        reference.document(doc.getId()).set(genre, SetOptions.merge());
+                                        Toast.makeText(ActivityCreateGenre.this, "Update Successfully!", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    } else
+                                    {
+                                        Log.i("TAG", "this is msg");
+                                    }
+                                }
+                            });
+                        }else{
+                            Toast.makeText(ActivityCreateGenre.this, "Please choose image!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                }
+            }
+        });
     }
+
     private void uploadFile(){
         final CollectionReference reference = firestore.collection("genre");
         if (imageUri != null)
@@ -126,9 +187,26 @@ public class ActivityCreateGenre extends AppCompatActivity {
                     {
                         Log.i("TAG", "this is msg");
                     }
+                    Toast.makeText(ActivityCreateGenre.this, "Add Successfully!", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             });
+        }else{
+            Toast.makeText(ActivityCreateGenre.this, "Please choose image!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void openFileChooser(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,PICK_IMAGE_REQUEST);
+    }
+
+    private String getFileExtension(Uri uri){
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
 }

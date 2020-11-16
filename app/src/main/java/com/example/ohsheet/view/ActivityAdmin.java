@@ -29,6 +29,7 @@ public class ActivityAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ActivityCreateSong.class);
+                intent.putExtra("updateSong", "Create");
                 startActivity(intent);
             }
         });
@@ -36,6 +37,7 @@ public class ActivityAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ActivityCreateGenre.class);
+                intent.putExtra("updateGenre", "Create");
                 startActivity(intent);
             }
         });

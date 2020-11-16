@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
                     textViewNav.setText("Oh Sheet");
                     Toast.makeText(this, "Clicked LogOut", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ActivityAdmin.class);
                     startActivityForResult(intent, REQUEST_CODE);
                     Toast.makeText(this, "Clicked Login", Toast.LENGTH_SHORT).show();
                 }
@@ -200,10 +200,6 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
     public void processSearch(String s){
        FirebaseRecyclerOptions<Song> options = new FirebaseRecyclerOptions.Builder<Song>()
                .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"),Song.class).build();
-
-
-
-
 
     }
 }
