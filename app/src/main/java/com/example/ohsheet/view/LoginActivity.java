@@ -121,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
             etPassWord.setError("PassWord must be >= 6 characters ! ");
             return;
         }
+
         AllowAccessToAccount(userName,passWord);
     }
     private void AllowAccessToAccount(final String userName, final String passWord){
@@ -142,6 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             if(parentNameDb.equals("admins")){
                                 Intent intent = new Intent(LoginActivity.this, ActivityAdmin.class);
+
                                 startActivity(intent);
                             }
                             Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();

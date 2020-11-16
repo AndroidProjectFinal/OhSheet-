@@ -42,7 +42,7 @@ import java.util.List;
 
 public class ActivityCreateSong extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
-    private static final int PICK_IMAGE = 1;
+    private static final int PICK_IMAGE = 2;
     private int upload_count =0;
     private EditText etTitleSong,etWriter,etLinkMusic;
     private Button btnAddImage,btnAddContent,btnSave;
@@ -120,7 +120,10 @@ public class ActivityCreateSong extends AppCompatActivity {
         btnAddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openFileChooser();
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent,PICK_IMAGE_REQUEST);
             }
         });
 
@@ -143,6 +146,7 @@ public class ActivityCreateSong extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Log.i("TAG",  String.valueOf(requestCode));
 
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
             && data != null && data.getData()!=null){
@@ -181,7 +185,7 @@ public class ActivityCreateSong extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
-    private ArrayList<String> stringUrl = new ArrayList<>();
+//    private ArrayList<String> stringUrl = new ArrayList<>();
 
     private void uploadFile(){
 
@@ -263,14 +267,14 @@ public class ActivityCreateSong extends AppCompatActivity {
 
     }
 
-//    private void StoreLink(String url) {
+    private void StoreLink(String url) {
 //        CollectionReference reference = firestore.collection("Content");
 //        HashMap<String,String> hashMap = new HashMap<>();
 //        hashMap.put("Imglink",url);
 //        reference.add(hashMap);
-//        progressDialog.dismiss();
-//        txtAlert.setText("Successfully");
-//}
+        progressDialog.dismiss();
+        txtAlert.setText("Successfully");
+}
     public interface MyCallback {
         void onCallback(String value);
     }
