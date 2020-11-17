@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
     private MenuItem menuItem;
     private ListAllSheet listAllSheet;
     private SongAdapter songAdapter;
-
+    private String infoLogin;
     public static int REQUEST_CODE= 100;
     public static int RESULT_CODE = 200;
 
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
 
         View header = navigationView.getHeaderView(0);
         textViewNav = header.findViewById(R.id.textViewNavHeader);
-
+        infoLogin = textViewNav.getText().toString();
 
 
         mRecyclerView = findViewById(R.id.recycleView);
@@ -116,7 +116,10 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
     public void onItemClick(int position) {
         Toast.makeText(this, "Clicked - " + position, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext(),ListSheetbyGenre.class);
+
+        infoLogin = textViewNav.getText().toString();
         intent.putExtra("genre",position);
+        intent.putExtra("info",infoLogin);
         startActivity(intent);
     }
 
@@ -129,6 +132,8 @@ public class MainActivity extends AppCompatActivity implements GenreAdapter.OnIt
             case R.id.nav_songs:
                 Toast.makeText(this, "Clicked songs", Toast.LENGTH_SHORT).show();
                 Intent intent2 = new Intent(getApplicationContext(),ListAllSheet.class);
+                infoLogin = textViewNav.getText().toString();
+                intent2.putExtra("info",infoLogin);
                 startActivity(intent2);
                 break;
             //Vô các bài hát yêu thích

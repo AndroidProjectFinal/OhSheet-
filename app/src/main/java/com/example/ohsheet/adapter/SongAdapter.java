@@ -1,12 +1,16 @@
 package com.example.ohsheet.adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ohsheet.R;
 import com.example.ohsheet.entity.Song;
@@ -21,12 +25,12 @@ public class SongAdapter extends BaseAdapter {
     private int layout;
     private List<Song> list;
     private int state;
-    private NavigationView navigationView;
-    private TextView textNav;
-    public SongAdapter(Activity activity, int layout, List<Song> list) {
+     private String infoUser;
+    public SongAdapter(Activity activity, int layout, List<Song> list,String s) {
         this.activity = activity;
         this.layout = layout;
         this.list = list;
+        this.infoUser = s;
     }
 
     @Override
@@ -74,27 +78,27 @@ public class SongAdapter extends BaseAdapter {
         imgSave.setImageResource(R.drawable.star);
         imgSave.setTag(R.drawable.star);
         state = Integer.parseInt(imgSave.getTag().toString());
-//        navigationView = convertView.findViewById(R.id.nav_view);
-//        View header = navigationView.getHeaderView(0);
-//        textNav = header.findViewById(R.id.textViewNavHeader);
-
-
 
         imgSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 if(state == R.drawable.star ){
-                     imgSave.setImageResource(R.drawable.starv);
-                     imgSave.setTag(R.drawable.starv);
-                     state = Integer.parseInt(imgSave.getTag().toString());
-                     txtLike.setText(Integer.toString(song.getLikeQuantity()+1));
-                 }else if(state == R.drawable.starv){
-                     imgSave.setImageResource(R.drawable.star);
-                     imgSave.setTag(R.drawable.star);
-                     state = Integer.parseInt(imgSave.getTag().toString());
-                     txtLike.setText(Integer.toString(song.getLikeQuantity()));
-                 }
+                if(!infoUser.equalsIgnoreCase("Oh Sheet")) {
+                    Log.d("og", infoUser + "acbed");
+                    if (state == R.drawable.star) {
+                        imgSave.setImageResource(R.drawable.starv);
+                        Log.d("og", infoUser);
+                        imgSave.setTag(R.drawable.starv);
+                        state = Integer.parseInt(imgSave.getTag().toString());
+                        txtLike.setText(Integer.toString(song.getLikeQuantity() + 1));
+                        song.setLikeQuantity(song.getLikeQuantity()+1);
+                    }else if (state == R.drawable.starv) {
+                        imgSave.setImageResource(R.drawable.star);
+                        imgSave.setTag(R.drawable.star);
+                        state = Integer.parseInt(imgSave.getTag().toString());
+                        txtLike.setText(Integer.toString(song.getLikeQuantity()));
 
+                    }
+                }
             }
         });
 

@@ -33,7 +33,7 @@ public class ListAllSheet extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private EditText txtSearch;
     private ImageView imgSearch;
-
+    private String info;
    private List<Song> list2;
    private String text;
     @Override
@@ -44,7 +44,8 @@ public class ListAllSheet extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         list = new ArrayList<>();
         txtSearch = findViewById(R.id.txtSearchSong2);
-
+        Bundle bundle = getIntent().getExtras();
+        info = bundle.getString("info");
         imgSearch = findViewById(R.id.imgSearch2);
         CollectionReference reference = firestore.collection("songs");
         reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -63,7 +64,7 @@ public class ListAllSheet extends AppCompatActivity {
                         );
                         list.add(song);
                     }
-                    songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list);
+                    songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list,info);
                     listView.setAdapter(songAdapter);
                 }
             }
@@ -98,7 +99,7 @@ public class ListAllSheet extends AppCompatActivity {
                                 }
                             }
 
-                            songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list2);
+                            songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list2,info);
                             listView.setAdapter(songAdapter);
                         }
                     }

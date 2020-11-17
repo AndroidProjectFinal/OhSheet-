@@ -38,7 +38,7 @@
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/plus" />
+        app:srcCompat="@drawable/star" />
 
     <TextView
         android:id="@+id/txtLike"

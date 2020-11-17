@@ -35,6 +35,7 @@ public class ListSheetbyGenre extends AppCompatActivity {
     private List<Song> list2;
     private String text;
     private int genID;
+    private String info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class ListSheetbyGenre extends AppCompatActivity {
         imgSearch = findViewById(R.id.imageViewbyGenre);
         list = new ArrayList<>();
         Bundle bundle = getIntent().getExtras();
-
+        info = bundle.getString("info");
         genID = bundle.getInt("genre");
         firestore.collection("songs").whereEqualTo("listGenre",genID)
         .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -64,7 +65,7 @@ public class ListSheetbyGenre extends AppCompatActivity {
                         );
                         list.add(song);
                     }
-                    songAdapter = new SongAdapter(ListSheetbyGenre.this,R.layout.customlayout,list);
+                    songAdapter = new SongAdapter(ListSheetbyGenre.this,R.layout.customlayout,list,info);
                     listView.setAdapter(songAdapter);
                 }
             }
@@ -99,7 +100,7 @@ public class ListSheetbyGenre extends AppCompatActivity {
                                 }
                             }
 
-                            songAdapter = new SongAdapter(ListSheetbyGenre.this,R.layout.customlayout,list2);
+                            songAdapter = new SongAdapter(ListSheetbyGenre.this,R.layout.customlayout,list2,info);
                             listView.setAdapter(songAdapter);
                         }
                     }
