@@ -74,23 +74,7 @@ public class ListAllSheet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 list2= new ArrayList<>();
-                CollectionReference reference = firestore.collection("songs");
-                reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            QuerySnapshot snapshots = task.getResult();
-                            for(QueryDocumentSnapshot doc : snapshots){
-                                Song song = new Song(
-                                        doc.get("title").toString(),
-                                        doc.get("writer").toString(),
-                                        doc.get("sheet").toString(),
-                                        doc.get("linkMusic").toString(),
-                                        doc.get("content").toString(),
-                                        doc.getLong("likeQuantity").intValue()
-                                );
-                                list.add(song);
-                            }
+
                             text = txtSearch.getText().toString();
                             for(int i =0;i<list.size();i++){
                                if(list.get(i).getTitle().trim().contains(text.trim())){
@@ -101,9 +85,7 @@ public class ListAllSheet extends AppCompatActivity {
 
                             songAdapter = new SongAdapter(ListAllSheet.this,R.layout.customlayout,list2,info);
                             listView.setAdapter(songAdapter);
-                        }
-                    }
-                });
+
 
             }
         });

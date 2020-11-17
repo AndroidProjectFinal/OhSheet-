@@ -90,7 +90,7 @@ public class SongAdapter extends BaseAdapter {
                         imgSave.setTag(R.drawable.starv);
                         state = Integer.parseInt(imgSave.getTag().toString());
                         txtLike.setText(Integer.toString(song.getLikeQuantity() + 1));
-                        song.setLikeQuantity(song.getLikeQuantity()+1);
+
                     }else if (state == R.drawable.starv) {
                         imgSave.setImageResource(R.drawable.star);
                         imgSave.setTag(R.drawable.star);
