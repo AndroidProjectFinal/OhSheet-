@@ -75,7 +75,7 @@ public class ListSheetbyGenre extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 list2= new ArrayList<>();
-                firestore.collection("songs").whereEqualTo("listGenre",1)
+                firestore.collection("songs").whereEqualTo("listGenre",genID)
                         .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {

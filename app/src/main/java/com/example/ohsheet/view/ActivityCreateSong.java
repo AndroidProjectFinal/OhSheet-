@@ -85,8 +85,6 @@ public class ActivityCreateSong extends AppCompatActivity {
         arrayList.add("1");
         arrayList.add("2");
         arrayList.add("3");
-        arrayList.add("4");
-        arrayList.add("5");
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, arrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         spLev.setAdapter(arrayAdapter);
@@ -306,6 +304,7 @@ public class ActivityCreateSong extends AppCompatActivity {
                                         date,
                                         etLinkMusic.getText().toString().trim());
                                 reference.add(song);
+                                progressDialog.dismiss();
                             } else
                             {
                                 Log.i("TAG", "Error");
@@ -315,39 +314,12 @@ public class ActivityCreateSong extends AppCompatActivity {
                 }
             }
         });
-//        StorageReference imageFolder = FirebaseStorage.getInstance().getReference().child("Content");
-//        for(upload_count=0;upload_count<ImageList.size();upload_count++){
-//            Uri IndividualImage = ImageList.get(upload_count);
-//            final StorageReference imageName = imageFolder.child("Image"+IndividualImage.getLastPathSegment());
-//            imageName.putFile(IndividualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                imageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                    @Override
-//                    public void onSuccess(Uri uri) {
-//                        String url = String.valueOf(uri);
-//                        stringUrl.add(url);
-//                        StoreLink(url);
-//                    }
-//                });
-//            }
-//        });
-//        }
-
-
 
 
 
     }
 
-//    private void StoreLink(String url) {
-//        CollectionReference reference = firestore.collection("Content");
-//        HashMap<String,String> hashMap = new HashMap<>();
-//        hashMap.put("Imglink",url);
-//        reference.add(hashMap);
-//        progressDialog.dismiss();
-//        txtAlert.setText("Successfully");
-//}
+
     public interface MyCallback {
         void onCallback(String value);
     }
