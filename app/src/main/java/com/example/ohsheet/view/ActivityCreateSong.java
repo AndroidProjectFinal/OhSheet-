@@ -299,12 +299,13 @@ public class ActivityCreateSong extends AppCompatActivity {
                                         downloadUri.toString(),
                                         content,
                                         Integer.parseInt(spLev.getSelectedItem().toString()),
-                                        spGenre.getSelectedItem().toString(),
+                                        String.valueOf(spGenre.getSelectedItemId()),
                                         "Tungdt",
                                         date,
                                         etLinkMusic.getText().toString().trim());
                                 reference.add(song);
                                 progressDialog.dismiss();
+                                finish();
                             } else
                             {
                                 Log.i("TAG", "Error");
@@ -325,11 +326,11 @@ public class ActivityCreateSong extends AppCompatActivity {
     }
     public void readData(final MyCallback myCallback) {
         final CollectionReference reference = firestore.collection("songs");
-        if (imageUri != null)
+        if (contentUri != null)
         {
             final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
-                    + "." +getFileExtension(imageUri));
-            fileReference.putFile(imageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
+                    + "." +getFileExtension(contentUri));
+            fileReference.putFile(contentUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
             {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
