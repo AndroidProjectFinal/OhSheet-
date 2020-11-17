@@ -91,7 +91,6 @@ public class ActivityListSong extends AppCompatActivity{
             intent.putExtra("link", song.getLinkMusic());
             intent.putExtra("content", song.getContent());
             startActivity(intent);
-
         }
         if(item.getTitle().equals("Delete")){
             Toast.makeText(this, adapter.getItem(info.position).toString(), Toast.LENGTH_SHORT).show();

@@ -60,7 +60,7 @@ public class ListAllSheet extends AppCompatActivity {
                                 doc.get("sheet").toString(),
                                 doc.get("linkMusic").toString(),
                                 doc.get("content").toString(),
-                                doc.getLong("like").intValue()
+                                doc.getLong("likeQuantity").intValue()
                         );
                         list.add(song);
                     }
@@ -87,7 +87,7 @@ public class ListAllSheet extends AppCompatActivity {
                                         doc.get("sheet").toString(),
                                         doc.get("linkMusic").toString(),
                                         doc.get("content").toString(),
-                                        (doc.getLong("like").intValue())
+                                        doc.getLong("likeQuantity").intValue()
                                 );
                                 list.add(song);
                             }
